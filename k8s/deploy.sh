@@ -85,9 +85,7 @@ log "================================================================"
 
 
 # configmap
-${KUBECTL} apply \
-  --namespace ${APP_NS} \
-   -f ${SCRIPT_DIR}/.${PREFIX}-cfgmap.yml
+${KUBECTL} apply  --namespace ${APP_NS}  -f ${SCRIPT_DIR}/.${PREFIX}-cfgmap.yml
 
 if [ $? -ne 0 ]; then
     log "================================================================"
