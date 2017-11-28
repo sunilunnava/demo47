@@ -51,7 +51,7 @@
 		<build.number>local</build.number>
 		<kube.namespace>com-att-ocnp-mgmt</kube.namespace>
 		<service.account>default</service.account>
-		<sdk.java.rest>6.2.0.4</sdk.java.rest>
+		<sdk.java.rest>6.2.0.4-oss</sdk.java.rest>
 	</properties>
 
 	<developers>
