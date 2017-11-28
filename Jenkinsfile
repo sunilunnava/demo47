@@ -28,7 +28,7 @@ node() {
 	pom = readMavenPom file: 'pom.xml'
 	PROJECT_NAME = pom.groupId ?: pom.parent.groupId+ ":" + pom.artifactId;
 	SERVICE_NAME=pom.artifactId;
-	VERSION=pom.version;
+	VERSION=pom.version
 	LABEL_VERSION=pom.version.replaceAll(".", "-");
 	echo "LabelVerion: " + LABEL_VERSION
 	NAMESPACE=pom.groupId ?: pom.parent.groupId;
@@ -36,7 +36,7 @@ node() {
 	IMAGE_NAME=pom.properties['docker.registry']+"/"+NAMESPACE+"/"+pom.artifactId+":latest"
 	echo "Artifact: " + PROJECT_NAME
 	 env.DOCKER_HOST="tcp://localhost:4243"
-     env.DOCKER_CONFIG="${WORKSPACE}/.docker"
+    env.DOCKER_CONFIG="${WORKSPACE}/.docker"
 	def branchName
 	
 	// Create kubectl.conf  file here from Pipeline properties provided.
@@ -88,7 +88,7 @@ node() {
                         "LABEL_VERSION=${LABEL_VERSION}",
                         "REPLICA_COUNT=${K8S_PODS_REPLICAS}",
                         "SERVICE_ACCOUNT=${K8S_SERVICE_ACCOUNT}",
-                        "KUBECTL=/opt/app/kubernetes/v1.3.4/bin/kubectl",
+                        "KUBECTL=/usr/local/sbin/kubectl",
                         "KUBECTL_OPTS=--server=${K8S_CLUSTER_URL} --insecure-skip-tls-verify=true  --password=${K8S_PASSWORD}  --username=${K8S_USERNAME}"
 						]) {
 						sh "./k8s/deploy.sh"
@@ -107,7 +107,7 @@ node() {
                         "REPLICA_COUNT=${K8S_PODS_REPLICAS}",
                         "IMAGE_NAME=${IMAGE_NAME}",
                         "SERVICE_ACCOUNT=${K8S_SERVICE_ACCOUNT}",
-                        "KUBECTL=/opt/app/kubernetes/v1.3.4/bin/kubectl",
+                        "KUBECTL=/usr/local/sbin/kubectl",
                         "KUBECTL_OPTS=--server=${K8S_CLUSTER_URL} --insecure-skip-tls-verify=true --password=${K8S_PASSWORD}  --username=${K8S_USERNAME}"
 						]) {
 						sh "./k8s/deploy.sh"
