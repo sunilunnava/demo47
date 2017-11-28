@@ -21,7 +21,7 @@ properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [
 
 echo "Build branch: ${env.BRANCH_NAME}"
 
-node("docker") {
+node() {
 	stage 'Checkout'
 	checkout scm
 	
