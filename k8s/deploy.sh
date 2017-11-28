@@ -81,6 +81,7 @@ log "Deploying Image : ${IMAGE_NAME}"
 log "K8S Context     : ${K8S_CTX}"
 log "K8S Namespace   : ${APP_NS}"
 log "K8S Environment : ${TARGET_ENV}"
+log ${KUBECTL_OPTS}
 log "================================================================"
 
 
