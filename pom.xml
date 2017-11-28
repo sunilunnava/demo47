@@ -40,7 +40,7 @@
 	<parent>
 		<groupId>com.att.ajsc</groupId>
 		<artifactId>sdk-java-starter-parent</artifactId>
-		<version>6.1.0.4</version>
+		<version>6.1.0.4-oss</version>
 	</parent>
 
 	<properties>
@@ -50,7 +50,7 @@
 		<java.version>1.8</java.version>
 		<build.number>local</build.number>
 		<kube.namespace>com-att-ocnp-mgmt</kube.namespace>
-		<service.account>YOUR</service.account>
+		<service.account>default</service.account>
 		<sdk.java.rest>6.2.0.4</sdk.java.rest>
 	</properties>
 
