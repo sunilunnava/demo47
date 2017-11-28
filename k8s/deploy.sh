@@ -82,12 +82,10 @@ log "K8S Context     : ${K8S_CTX}"
 log "K8S Namespace   : ${APP_NS}"
 log "K8S Environment : ${TARGET_ENV}"
 log "================================================================"
-${KUBECTL} get pods
-
 
 
 # configmap
-${KUBECTL} apply  --namespace ${APP_NS}  -f ${SCRIPT_DIR}/demo47-rc.yaml
+${KUBECTL} apply  --namespace ${APP_NS}  -f ${SCRIPT_DIR}/demo47-rc.yaml --validate=false
 
 if [ $? -ne 0 ]; then
     log "================================================================"
