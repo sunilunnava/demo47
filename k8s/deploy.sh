@@ -70,9 +70,9 @@ EOF
 
 PREFIX=${TARGET_ENV}-${APP_NS}-${APP_NAME}
 
-generate ${SCRIPT_DIR}/cfgmap.tpl.yml ${SCRIPT_DIR}/${PREFIX}-cfgmap.yml
-generate ${SCRIPT_DIR}/deployment.tpl.yml ${SCRIPT_DIR}/${PREFIX}-deployment.yml
-generate ${SCRIPT_DIR}/svc.tpl.yml ${SCRIPT_DIR}/${PREFIX}-svc.yml
+generate ${SCRIPT_DIR}/cfgmap.tpl.yml ${SCRIPT_DIR}/.${PREFIX}-cfgmap.yml
+generate ${SCRIPT_DIR}/deployment.tpl.yml ${SCRIPT_DIR}/.${PREFIX}-deployment.yml
+generate ${SCRIPT_DIR}/svc.tpl.yml ${SCRIPT_DIR}/.${PREFIX}-svc.yml
 
 
 log "================================================================"
@@ -82,10 +82,12 @@ log "K8S Context     : ${K8S_CTX}"
 log "K8S Namespace   : ${APP_NS}"
 log "K8S Environment : ${TARGET_ENV}"
 log "================================================================"
+${KUBECTL} get pods
 
+log "test"
 
 # configmap
-${KUBECTL} apply  --namespace ${APP_NS}  -f ${SCRIPT_DIR}/${PREFIX}-cfgmap.yml
+${KUBECTL} apply  --namespace ${APP_NS}  -f ${SCRIPT_DIR}/.${PREFIX}-cfgmap.yml
 
 if [ $? -ne 0 ]; then
     log "================================================================"
