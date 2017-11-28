@@ -85,7 +85,7 @@ log "================================================================"
 
 
 # configmap
-${KUBECTL} apply  --namespace ${APP_NS} --context ${K8S_CTX} ${KUBECTL_OPTS} -f ${SCRIPT_DIR}/.${PREFIX}-cfgmap.yml
+${KUBECTL} apply  --namespace ${APP_NS}  ${KUBECTL_OPTS} -f ${SCRIPT_DIR}/.${PREFIX}-cfgmap.yml
 
 # svc
 ${KUBECTL} apply \
