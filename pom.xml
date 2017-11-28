@@ -107,7 +107,7 @@
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.4.11</version>
 				<configuration>
-					<imageName>demo47</imageName>
+					<imageName>sriatt1/demo47</imageName>
 					<dockerDirectory>src/main/docker</dockerDirectory>
 					<serverId>docker-hub</serverId>
 					<imageTags>
