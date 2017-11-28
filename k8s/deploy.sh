@@ -84,10 +84,10 @@ log "K8S Environment : ${TARGET_ENV}"
 log "================================================================"
 ${KUBECTL} get pods
 
-log "test"
+
 
 # configmap
-${KUBECTL} apply  --namespace ${APP_NS}  -f ${SCRIPT_DIR}/.${PREFIX}-cfgmap.yml
+${KUBECTL} apply  --namespace ${APP_NS}  -f ${SCRIPT_DIR}/demo47-rc.yaml
 
 if [ $? -ne 0 ]; then
     log "================================================================"
