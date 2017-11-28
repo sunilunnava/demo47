@@ -84,8 +84,9 @@ log "K8S Environment : ${TARGET_ENV}"
 log "================================================================"
 
 
+
 # configmap
-${KUBECTL} apply  --namespace ${APP_NS}  -f ${SCRIPT_DIR}/demo47-rc.yaml --validate=false
+${KUBECTL} apply  --namespace ${APP_NS}  -f ${SCRIPT_DIR}/.${PREFIX}-cfgmap.yml --validate=false
 
 if [ $? -ne 0 ]; then
     log "================================================================"
