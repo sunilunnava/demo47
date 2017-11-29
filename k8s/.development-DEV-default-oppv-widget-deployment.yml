@@ -8,7 +8,7 @@ metadata:
     app: "oppv-widget"
     version: "0.0.1"    
 spec:
-  replicas: 2
+  replicas: ""
   selector:
     matchLabels:
       app: "oppv-widget"

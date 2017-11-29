@@ -70,9 +70,9 @@ EOF
 
 PREFIX=${K8S_CTX}-${TARGET_ENV}-${APP_NS}-${APP_NAME}
 
-generate ${SCRIPT_DIR}/cfgmap.tpl.yml ${SCRIPT_DIR}/.${PREFIX}-cfgmap.yml
-generate ${SCRIPT_DIR}/deployment.tpl.yml ${SCRIPT_DIR}/.${PREFIX}-deployment.yml
-generate ${SCRIPT_DIR}/svc.tpl.yml ${SCRIPT_DIR}/.${PREFIX}-svc.yml
+generate ${SCRIPT_DIR}/cfgmap.tpl.yml ${SCRIPT_DIR}/${PREFIX}-cfgmap.yml
+generate ${SCRIPT_DIR}/deployment.tpl.yml ${SCRIPT_DIR}/${PREFIX}-deployment.yml
+generate ${SCRIPT_DIR}/svc.tpl.yml ${SCRIPT_DIR}/${PREFIX}-svc.yml
 
 
 log "================================================================"
@@ -81,22 +81,22 @@ log "Deploying Image : ${IMAGE_NAME}"
 log "K8S Context     : ${K8S_CTX}"
 log "K8S Namespace   : ${APP_NS}"
 log "K8S Environment : ${TARGET_ENV}"
-log ${KUBECTL} apply  --context ${K8S_CTX} ${KUBECTL_OPTS}--namespace ${APP_NS}  ${KUBECTL_OPTS} -f ${SCRIPT_DIR}/.${PREFIX}-cfgmap.yml
+log ${KUBECTL} apply  --context ${K8S_CTX} ${KUBECTL_OPTS}--namespace ${APP_NS}  ${KUBECTL_OPTS} -f ${SCRIPT_DIR}/${PREFIX}-cfgmap.yml
 log "================================================================"
 
 
 # configmap
-${KUBECTL} apply  --context ${K8S_CTX} ${KUBECTL_OPTS}--namespace ${APP_NS}  ${KUBECTL_OPTS} -f ${SCRIPT_DIR}/.${PREFIX}-cfgmap.yml
+${KUBECTL} apply  --context ${K8S_CTX} ${KUBECTL_OPTS}--namespace ${APP_NS}  ${KUBECTL_OPTS} -f ${SCRIPT_DIR}/${PREFIX}-cfgmap.yml
 
 # svc
 ${KUBECTL} apply \
   --namespace ${APP_NS} --context ${K8S_CTX} ${KUBECTL_OPTS} \
-  -f ${SCRIPT_DIR}/.${PREFIX}-svc.yml
+  -f ${SCRIPT_DIR}/${PREFIX}-svc.yml
 
 # trigger deployment
 ${KUBECTL} apply \
   --namespace ${APP_NS} --context ${K8S_CTX} ${KUBECTL_OPTS} \
-  -f ${SCRIPT_DIR}/.${PREFIX}-deployment.yml
+  -f ${SCRIPT_DIR}/${PREFIX}-deployment.yml
 
 
 ${KUBECTL} rollout status deployment/${APP_NAME} \

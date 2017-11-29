@@ -4,8 +4,7 @@
 properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [ 
 [$class: 'hudson.model.StringParameterDefinition', name: 'PHASE', defaultValue: "BUILD"],
 [$class: 'hudson.model.StringParameterDefinition', name: 'TARGET_ENV', defaultValue: "DEV"],
-[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_CLUSTER_URL',defaultValue: "http://18.216.240.81"],
-[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_CONTEXT',defaultValue: " "],
+[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_CLUSTER_URL',defaultValue: "https://18.216.240.81"],
 [$class: 'hudson.model.StringParameterDefinition', name: 'K8S_USERNAME',defaultValue: "cdposs"],
 [$class: 'hudson.model.PasswordParameterDefinition', name: 'K8S_PASSWORD',defaultValue: "cdposs"],
 [$class: 'hudson.model.StringParameterDefinition', name: 'K8S_PODS_REPLICAS',defaultValue: "1"],
@@ -32,7 +31,7 @@ node() {
 	echo "LabelVerion: " + LABEL_VERSION
 	NAMESPACE=pom.groupId ?: pom.parent.groupId;
 	KUBE_NAMESPACE=pom.properties['kube.namespace']
-	IMAGE_NAME=pom.properties['docker.registry']+"/"+NAMESPACE+"/"+pom.artifactId+":latest"
+	IMAGE_NAME="sriatt1"+"/"+pom.artifactId+":latest"
 	echo "Artifact: " + PROJECT_NAME
 	 env.DOCKER_HOST="tcp://localhost:4243"
     env.DOCKER_CONFIG="${WORKSPACE}/.docker"
@@ -90,6 +89,7 @@ node() {
                         "KUBECTL=/usr/local/sbin/kubectl",
                         "KUBECTL_OPTS=--server=${K8S_CLUSTER_URL} --insecure-skip-tls-verify=true  --password=${K8S_PASSWORD}  --username=${K8S_USERNAME}"
 						]) {
+						sh "sudo su root"
 						sh "./k8s/deploy.sh"
 					}
 				}
@@ -109,6 +109,7 @@ node() {
                         "KUBECTL=/usr/local/sbin/kubectl",
                         "KUBECTL_OPTS=--server=${K8S_CLUSTER_URL} --insecure-skip-tls-verify=true --password=${K8S_PASSWORD}  --username=${K8S_USERNAME}"
 						]) {
+						sh "sudo su root"
 						sh "./k8s/deploy.sh"
 					}
 				}
