@@ -81,16 +81,16 @@ log "Deploying Image : ${IMAGE_NAME}"
 log "K8S Context     : ${K8S_CTX}"
 log "K8S Namespace   : ${APP_NS}"
 log "K8S Environment : ${TARGET_ENV}"
-log ${KUBECTL} apply  --context ${K8S_CTX} ${KUBECTL_OPTS}--namespace ${APP_NS}  ${KUBECTL_OPTS} -f ${SCRIPT_DIR}/${PREFIX}-cfgmap.yml
+log ${KUBECTL} apply   ${KUBECTL_OPTS}--namespace ${APP_NS}  ${KUBECTL_OPTS} -f ${SCRIPT_DIR}/${PREFIX}-cfgmap.yml
 log "================================================================"
 
 
 # configmap
-${KUBECTL} apply  --context ${K8S_CTX} ${KUBECTL_OPTS}--namespace ${APP_NS}  ${KUBECTL_OPTS} -f ${SCRIPT_DIR}/${PREFIX}-cfgmap.yml
+${KUBECTL} apply   ${KUBECTL_OPTS}--namespace ${APP_NS}  ${KUBECTL_OPTS} -f ${SCRIPT_DIR}/${PREFIX}-cfgmap.yml
 
 # svc
 ${KUBECTL} apply \
-  --namespace ${APP_NS} } ${KUBECTL_OPTS} \
+  --namespace ${APP_NS}  ${KUBECTL_OPTS} \
   -f ${SCRIPT_DIR}/${PREFIX}-svc.yml
 
 # trigger deployment
@@ -100,7 +100,7 @@ ${KUBECTL} apply \
 
 
 ${KUBECTL} rollout status deployment/${APP_NAME} \
-  --namespace ${APP_NS} --context ${K8S_CTX} ${KUBECTL_OPTS}
+  --namespace ${APP_NS}  ${KUBECTL_OPTS}
 if [ $? -ne 0 ]; then
     log "================================================================"
     log " Failure - ${APP_NAME} Deployment Failed!!"
