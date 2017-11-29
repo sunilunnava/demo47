@@ -90,7 +90,7 @@ node() {
                         "KUBECTL=/usr/local/sbin/kubectl",
                         "KUBECTL_OPTS=--server=${K8S_CLUSTER_URL} --insecure-skip-tls-verify=true  --password=${K8S_PASSWORD}  --username=${K8S_USERNAME}"
 						]) {
-						sh "sudo su root"
+							
 						sh "./k8s/deploy.sh"
 					}
 				}
