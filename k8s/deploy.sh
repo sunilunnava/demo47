@@ -90,12 +90,12 @@ ${KUBECTL} apply  --context ${K8S_CTX} ${KUBECTL_OPTS}--namespace ${APP_NS}  ${K
 
 # svc
 ${KUBECTL} apply \
-  --namespace ${APP_NS} --context ${K8S_CTX} ${KUBECTL_OPTS} \
+  --namespace ${APP_NS} } ${KUBECTL_OPTS} \
   -f ${SCRIPT_DIR}/${PREFIX}-svc.yml
 
 # trigger deployment
 ${KUBECTL} apply \
-  --namespace ${APP_NS} --context ${K8S_CTX} ${KUBECTL_OPTS} \
+  --namespace ${APP_NS}  ${KUBECTL_OPTS} \
   -f ${SCRIPT_DIR}/${PREFIX}-deployment.yml
 
 

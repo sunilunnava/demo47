@@ -8,7 +8,8 @@ properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [
 [$class: 'hudson.model.StringParameterDefinition', name: 'K8S_USERNAME',defaultValue: "cdposs"],
 [$class: 'hudson.model.PasswordParameterDefinition', name: 'K8S_PASSWORD',defaultValue: "cdposs"],
 [$class: 'hudson.model.StringParameterDefinition', name: 'K8S_PODS_REPLICAS',defaultValue: "1"],
-[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_SERVICE_ACCOUNT',defaultValue: "default"]   
+[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_SERVICE_ACCOUNT',defaultValue: "default"]
+[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_CONTEXT',defaultValue: "default"] 
 ]]]) 
 
 /**
