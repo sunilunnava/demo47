@@ -5,10 +5,10 @@ properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [
 [$class: 'hudson.model.StringParameterDefinition', name: 'PHASE', defaultValue: "BUILD"],
 [$class: 'hudson.model.StringParameterDefinition', name: 'TARGET_ENV', defaultValue: "DEV"],
 [$class: 'hudson.model.StringParameterDefinition', name: 'K8S_CLUSTER_URL',defaultValue: "https://18.216.240.81"],
-[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_USERNAME',defaultValue: "cdposs"],
-[$class: 'hudson.model.PasswordParameterDefinition', name: 'K8S_PASSWORD',defaultValue: "cdposs"],
+[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_USERNAME',defaultValue: "admin"],
+[$class: 'hudson.model.PasswordParameterDefinition', name: 'K8S_PASSWORD',defaultValue: "t7hQLAGGyOf4aro7SZJoa22AjfYIfmA5"],
 [$class: 'hudson.model.StringParameterDefinition', name: 'K8S_PODS_REPLICAS',defaultValue: "1"],
-[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_SERVICE_ACCOUNT',defaultValue: "default"]
+[$class: 'hudson.model.StringParameterDefinition', name: 'K8S_SERVICE_ACCOUNT',defaultValue: "default"],
 [$class: 'hudson.model.StringParameterDefinition', name: 'K8S_CONTEXT',defaultValue: "default"] 
 ]]]) 
 
